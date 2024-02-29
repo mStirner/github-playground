@@ -1,0 +1,28 @@
+name: Release Workflow
+
+on:
+  pull_request_target:
+    types:
+      - closed
+    branches:
+      - dev
+  review:
+    types:
+      - submitted
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions: write-all
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+     
+      - name: "Do something"
+        run: "echo 'Hello World - did something'"
